@@ -3,3 +3,11 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: url('/assets/fonts/Poppins-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 100;
+  font-display: block;
+}
