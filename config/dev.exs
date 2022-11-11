@@ -1,5 +1,22 @@
 import Config
 
+# Configure connection to the Bitcoin Network:
+
+# mainnet:
+config :joy, magic: <<0xF9, 0xBE, 0xB4, 0xD9>>
+
+# testnet/regtest:
+# config :joy, magic: <<0xFA, 0xBF, 0xB5, 0xDA>>
+
+config :joy,
+  # ip: <<0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, 0xFF, 127, 0, 0, 1>>
+  # ip: <<0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, 0xFF, 46, 101, 116, 88>>
+  ip: <<0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, 0xFF, 3, 73, 204, 15>>
+
+# config :joy, port: 19_444
+# config :joy, port: 8332
+config :joy, port: 48_333
+
 # Configure your database
 config :joy, Joy.Repo,
   username: "postgres",
@@ -23,9 +40,11 @@ config :joy, JoyWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "rBl4Pfl8H1QbeQOeS87ysIgIRij3oAOUwjG0qZQ5VvHgMUzDyVowY0fQQ6rMUmmM",
+  secret_key_base:
+    "rBl4Pfl8H1QbeQOeS87ysIgIRij3oAOUwjG0qZQ5VvHgMUzDyVowY0fQQ6rMUmmM",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    esbuild:
+      {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 

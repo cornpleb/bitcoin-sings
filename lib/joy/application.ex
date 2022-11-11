@@ -3,6 +3,7 @@ defmodule Joy.Application do
   # for more information on OTP Applications
   @moduledoc false
 
+  alias Joy.Bitcoin.Network
   use Application
 
   @impl true
@@ -17,15 +18,27 @@ defmodule Joy.Application do
       # Start Finch
       {Finch, name: Joy.Finch},
       # Start the Endpoint (http/https)
-      JoyWeb.Endpoint
+      JoyWeb.Endpoint,
       # Start a worker by calling: Joy.Worker.start_link(arg)
       # {Joy.Worker, arg}
+
+      {
+        DynamicSupervisor,
+        name: Joy.Bitcoin.Network.Node.Supervisor,
+        strategy: :one_for_one,
+        max_children: 2
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Joy.Supervisor]
     Supervisor.start_link(children, opts)
+
+    Network.connect_to_node(
+      Application.get_env(:joy, :ip),
+      Application.get_env(:joy, :port)
+    )
   end
 
   # Tell Phoenix to update the endpoint configuration
