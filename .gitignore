@@ -23,7 +23,8 @@ erl_crash.dump
 joy-*.tar
 
 # Ignore assets that are produced by build tools.
-/priv/static/assets/
+/priv/static/assets/*.js
+/priv/static/assets/*.css
 
 # Ignore digested assets cache.
 /priv/static/cache_manifest.json
