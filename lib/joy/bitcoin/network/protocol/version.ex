@@ -73,7 +73,8 @@ defmodule Joy.Bitcoin.Network.Protocol.Version do
   alias Joy.Bitcoin.Network.Protocol.{VarStr, Version, VersionNetAddr}
 
   def parse(binary) do
-    with <<version::32-little, services::64-little, timestamp::64-little, rest::binary>> <-
+    with <<version::32-little, services::64-little, timestamp::64-little,
+           rest::binary>> <-
            binary,
          {:ok,
           %VersionNetAddr{

@@ -17,7 +17,8 @@ config :joy, Joy.Repo,
 # you can enable the server option below.
 config :joy, JoyWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "1j6+7bXbnVSgLm8/hlzec9yDgWfcJWLrWMnUbhshdigpZ8hKmRZn+N3Z7py8FPEF",
+  secret_key_base:
+    "1j6+7bXbnVSgLm8/hlzec9yDgWfcJWLrWMnUbhshdigpZ8hKmRZn+N3Z7py8FPEF",
   server: false
 
 # In test we don't send emails.

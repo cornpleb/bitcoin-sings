@@ -30,6 +30,7 @@ defimpl Joy.Bitcoin.Network.Protocol,
   alias Joy.Bitcoin.Network.Protocol.VarStr
 
   def serialize(%VarStr{value: value}) do
-    <<Protocol.serialize(%VarInt{value: String.length(value)})::binary, value::binary>>
+    <<Protocol.serialize(%VarInt{value: String.length(value)})::binary,
+      value::binary>>
   end
 end
