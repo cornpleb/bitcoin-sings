@@ -66,10 +66,33 @@ channel.join()
 
 export default socket
 
-channel.on("activate_confirmed", payload => {
-  Sounds.play()
+
+// User needs to interact with the page so the browser will allow sound to play.
+document.getElementById("sound-toggle").addEventListener("click", function () {
+  activated = Sounds.toggle()
+
+  this.classList.toggle("bg-orange-500")
+  this.classList.toggle("bg-green-500")
+
+  if (activated) {
+    this.innerHTML = "Sound on! Click to deactivate."
+  }
+  else {
+    this.innerHTML = "Sound off! Click to activate!"
+  }
 })
 
-window.addEventListener("click", function () {
-  channel.push("activate", { body: "Music please!" })
+
+channel.on("new-tx", payload => {
+  counterEle = document.getElementById("tx-counter")
+  count = parseInt(counterEle.innerHTML)
+  counterEle.innerHTML = (count += 1)
+  Sounds.playTx()
+})
+
+channel.on("new-block", payload => {
+  counterEle = document.getElementById("block-counter")
+  count = parseInt(counterEle.innerHTML)
+  counterEle.innerHTML = (count += 1)
+  Sounds.playBlock()
 })

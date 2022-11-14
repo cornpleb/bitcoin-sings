@@ -242,12 +242,21 @@ defmodule Joy.Bitcoin.Network.NodeServer do
   defp handle_payload(_tx = %Tx{}, state) do
     log("Received Tx")
     # IO.inspect(tx)
+    JoyWeb.Endpoint.broadcast!("sounds:home", "new-tx", %{
+      body: "NEW TX!"
+    })
+
     {:ok, state}
   end
 
   defp handle_payload(_block = %Block{}, state) do
     log("Received Block")
     # IO.inspect(block)
+
+    JoyWeb.Endpoint.broadcast!("sounds:home", "new-block", %{
+      body: "NEW BLOCK!"
+    })
+
     {:ok, state}
   end
 
