@@ -13,8 +13,3 @@ export var Sounds = {
     sound.play()
   }
 }
-
-
-window.addEventListener("click", function () {
-  Sounds.play()
-})
