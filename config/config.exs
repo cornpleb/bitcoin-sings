@@ -7,9 +7,6 @@
 # General application configuration
 import Config
 
-config :joy,
-  ecto_repos: [Joy.Repo]
-
 # Configures the endpoint
 config :joy, JoyWeb.Endpoint,
   url: [host: "localhost"],

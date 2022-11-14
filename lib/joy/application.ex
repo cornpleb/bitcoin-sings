@@ -11,8 +11,6 @@ defmodule Joy.Application do
     children = [
       # Start the Telemetry supervisor
       JoyWeb.Telemetry,
-      # Start the Ecto repository
-      Joy.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: Joy.PubSub},
       # Start Finch
