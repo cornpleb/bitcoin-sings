@@ -62,13 +62,8 @@ defmodule Joy.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup"],
-      test: ["test"],
-      "assets.deploy": [
-        "tailwind default --minify",
-        "esbuild default --minify",
-        "phx.digest"
-      ]
+      setup: ["deps.get"],
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end
 end
